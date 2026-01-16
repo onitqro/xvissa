@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis XV Años - Issa</title>
+    <!-- Fuentes Elegantes -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --lila-soft: #f8f4ff;
+            --lila-medio: #d1b3e6;
+            --lila-oscuro: #8e44ad;
+            --dorado: #c5a059;
+            --texto: #2c3e50;
+            --overlay-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            /* Conservamos la textura rosa como fondo principal */
+            background-image: url('images/bk_pink.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: var(--texto);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: auto; /* Ajuste para reducir separaciones excesivas */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Tarjeta con efecto cristal */
+        .glass-card {
+            background: var(--overlay-light);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+            margin: 10px 0;
+        }
+
+        /* Portada compacta */
+        #portada {
+            padding-top: 40px;
+            min-height: 90vh;
+        }
+
+        .logo-img {
+            max-width: 130px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .logo-issa {
+            font-size: 2.3rem;
+            letter-spacing: 8px;
+            color: var(--texto);
+            margin-bottom: 5px;
+        }
+
+        .quince-badge {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--dorado);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .fecha-portada {
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            border-top: 1px solid var(--dorado);
+            border-bottom: 1px solid var(--dorado);
+            padding: 5px 15px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* Contador */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .time-unit {
+            background: white;
+            padding: 8px 2px;
+            border-radius: 10px;
+            border-bottom: 2px solid var(--dorado);
+        }
+
+        .time-unit span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .time-unit label {
+            font-size: 0.55rem;
+            color: #888;
+        }
+
+        /* Galería */
+        .gallery-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .gallery-item {
+            border: 6px solid white;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: #fdfdfd;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .separator {
+            width: 50px;
+            height: 1px;
+            background: var(--dorado);
+            margin: 12px auto;
+        }
+
+        /* Botones */
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            padding: 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin: 8px auto;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-calendar { background: #2c3e50; color: white; }
+        .btn-map { background: white; color: var(--texto); border: 1px solid var(--dorado); }
+        .btn-whatsapp { background: #25d366; color: white; }
+
+        footer {
+            padding: 20px;
+            background: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA -->
+    <section id="portada">
+        <div class="glass-card">
+            <img src="images/Logo Para Marca de Ropa Moderno Blanco y Negro.png" alt="[Logo de XV Issa]" class="logo-img">
+            <h1 class="logo-issa">ISSA</h1>
+            <div class="quince-badge">XV</div>
+            <p class="fecha-portada">14 · MARZO · 2026</p>
+            
+            <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 15px;">
+                "Hay momentos que se vuelven inolvidables cuando se comparten con las personas que más queremos."
+            </p>
+
+            <div class="countdown" id="timer">
+                <div class="time-unit"><span id="days">00</span><label>DÍAS</label></div>
+                <div class="time-unit"><span id="hours">00</span><label>HRS</label></div>
+                <div class="time-unit"><span id="mins">00</span><label>MIN</label></div>
+                <div class="time-unit"><span id="secs">00</span><label>SEG</label></div>
+            </div>
+
+            <button class="btn btn-calendar" onclick="addToCalendar()">
+                AGREGAR AL CALENDARIO
+            </button>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <h2 style="font-size: 1.8rem; color: var(--texto); margin-bottom: 20px;">Momentos</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="images/issa.jpeg" alt="[Foto de Issa 1]">
+            </div>
+            <div class="gallery-item">
+                <!-- Se actualizó el nombre del archivo y la extensión corregida -->
+                <img src="images/issa_pequeña.jpe" alt="[Foto de Issa pequeña]">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAMILIA -->
+    <section id="padres">
+        <div class="glass-card">
+            <h2 class="font-serif italic" style="font-size: 1.4rem;">Con la bendición de mis padres</h2>
+            <div class="separator"></div>
+            <p style="font-size: 1.05rem;">
+                <strong>Lucia Rosales Rodríguez</strong><br>
+                <span style="color: var(--dorado);">&</span><br>
+                <strong>Rafael Pineda Rivera</strong>
+            </p>
+            
+            <h2 class="font-serif italic" style="font-size: 1.4rem; margin-top: 20px;">Mi Madrina</h2>
+            <div class="separator"></div>
+            <p style="font-size: 1.05rem;">
+                <strong>Carolina Rivera Díaz</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- UBICACIONES -->
+    <section id="ubicaciones">
+        <div class="glass-card">
+            <i class="fas fa-church" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+            <h3 style="font-size: 1.3rem;">Ceremonia Religiosa</h3>
+            <p><strong>Parroquia de San Francisco Galileo</strong></p>
+            <p>15:00 Horas</p>
+            <p style="font-size: 0.75rem; color: #7f8c8d;">El Pueblito, Corregidora, Qro.</p>
+            <a href="https://maps.app.goo.gl/DGXMSm9QWjcaYWuTA" target="_blank" class="btn btn-map">VER MAPA</a>
+        </div>
+
+        <div class="glass-card">
+            <i class="fas fa-glass-cheers" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+            <h3 style="font-size: 1.3rem;">Recepción</h3>
+            <p><strong>Chocolate Azul Jardín</strong></p>
+            <p>17:30 Horas</p>
+            <a href="https://maps.app.goo.gl/28VZqnHdGxJ7nGxS6?g_st=iw" target="_blank" class="btn btn-map">VER MAPA</a>
+        </div>
+    </section>
+
+    <!-- VESTIMENTA -->
+    <section id="vestimenta">
+        <div class="glass-card" style="border: 1.5px solid var(--dorado);">
+            <i class="fas fa-user-tie" style="font-size: 1.6rem; margin-bottom: 5px;"></i>
+            <h2 style="font-size: 1.4rem;">Código de Vestimenta</h2>
+            <div class="separator"></div>
+            <p style="font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;">Formal</p>
+            <p style="font-size: 0.8rem; font-style: italic; margin-top: 10px; color: #555;">
+                Agradecemos su preferencia por cualquier color, exceptuando el <strong>Rosa</strong>, reservado para la quinceañera.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONFIRMACIÓN -->
+    <section id="detalles">
+        <div class="glass-card">
+            <i class="fas fa-gift" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+            <h3 style="font-size: 1.3rem;">Lluvia de Sobres</h3>
+            <p style="font-size: 0.8rem; margin: 8px 0;">
+                Tu presencia es mi mejor regalo, pero si deseas tener un detalle, te agradeceré tu generosidad en efectivo.
+            </p>
+            
+            <div class="separator"></div>
+
+            <p style="font-size: 1rem;">Pases Reservados: <strong>06</strong></p>
+            <p style="color: #7f8c8d; font-size: 0.75rem; margin-bottom: 10px;">Confirmar antes del 20 de febrero.</p>
+            
+            <a href="https://wa.me/521234567890?text=Hola%20Issa!%20Confirmo%20mi%20asistencia." target="_blank" class="btn btn-whatsapp">
+                CONFIRMAR ASISTENCIA
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>ISSA · 2026 · QUINCE AÑOS</p>
+    </footer>
+
+    <script>
+        const targetDate = new Date("March 14, 2026 15:00:00").getTime();
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("mins").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("secs").innerText = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("timer").innerHTML = "¡ES HOY!";
+            }
+        }, 1000);
+
+        function addToCalendar() {
+            const title = "XV Años de Issa";
+            const details = "Ceremonia y Recepción.";
+            const location = "Parroquia de San Francisco Galileo, Qro.";
+            const startDate = "20260314T150000Z";
+            const endDate = "20260315T020000Z";
+            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            window.open(googleUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
