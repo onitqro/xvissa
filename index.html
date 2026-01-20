@@ -325,8 +325,8 @@
 <body>
 
     <!-- Reproductor de Audio -->
-    <audio id="bgMusic" loop>
-        <source src="song.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop autoplay>
+        <source src="images/song.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Control de Música -->
@@ -423,7 +423,7 @@
                 <img src="images/issa.jpeg" alt="[Foto de Issa 1]">
             </div>
             <div class="gallery-item">
-                <img src="images/issa_pequena.jpeg" alt="[Foto de Issa pequeña]">
+                <img src="images/issa_pequeña.jpeg" alt="[Foto de Issa pequeña]">
             </div>
         </div>
     </section>
@@ -533,28 +533,40 @@
 
     <script>
         const targetDate = new Date("March 14, 2026 15:00:00").getTime();
-        
-        // Función de Música
+        const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicToggle");
+
+        // Función para alternar música
         function toggleMusic() {
-            const music = document.getElementById("bgMusic");
-            const btn = document.getElementById("musicToggle");
-            
             if (music.paused) {
-                music.play();
-                btn.classList.add("playing");
+                playMusic();
             } else {
-                music.pause();
-                btn.classList.remove("playing");
+                pauseMusic();
             }
         }
 
-        // Intento de reproducción automática (muchos navegadores lo bloquean hasta que el usuario interactúa)
+        function playMusic() {
+            music.play().then(() => {
+                btn.classList.add("playing");
+            }).catch(e => console.log("Error al reproducir audio:", e));
+        }
+
+        function pauseMusic() {
+            music.pause();
+            btn.classList.remove("playing");
+        }
+
+        // Desbloqueo de audio al interactuar con el sitio
         window.addEventListener('click', () => {
-            const music = document.getElementById("bgMusic");
-            if(music.paused && !document.getElementById("musicToggle").classList.contains('manual-stop')) {
-                // music.play(); // Opcional: auto-play al primer click en cualquier parte
+            if (music.paused) {
+                playMusic();
             }
         }, { once: true });
+
+        // Intento de reproducción al cargar (puede fallar por políticas del navegador)
+        window.onload = function() {
+            playMusic();
+        };
 
         const countdown = setInterval(function() {
             const now = new Date().getTime();
