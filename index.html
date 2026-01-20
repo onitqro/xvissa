@@ -68,6 +68,84 @@
             min-height: 90vh;
         }
 
+        /* Estilos del Cronograma */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-time {
+            min-width: 85px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--dorado);
+            padding-right: 15px;
+            text-align: right;
+            padding-top: 3px;
+        }
+
+        .timeline-content {
+            border-left: 2px solid var(--dorado);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid var(--dorado);
+            border-radius: 50%;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--texto);
+        }
+
+        /* Botón de Música */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            border: 1px solid var(--dorado);
+            color: var(--dorado);
+        }
+
+        .music-control.playing i {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         .logo-img {
             max-width: 130px;
             margin-bottom: 10px;
@@ -188,13 +266,12 @@
         .btn-liverpool { background: #e6007e; color: white; }
         .btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: white; }
 
-        /* Estilos para el efecto FLIP de la tarjeta de sobres */
         .flip-container {
             perspective: 1000px;
             width: 100%;
             max-width: 450px;
             margin: 10px 0;
-            height: 200px; /* Altura fija para el efecto de giro */
+            height: 200px;
         }
 
         .flipper {
@@ -247,6 +324,16 @@
 </head>
 <body>
 
+    <!-- Reproductor de Audio -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Control de Música -->
+    <div class="music-control" id="musicToggle" onclick="toggleMusic()">
+        <i class="fas fa-music"></i>
+    </div>
+
     <!-- PORTADA -->
     <section id="portada">
         <div class="glass-card">
@@ -269,6 +356,51 @@
             <button class="btn btn-calendar" onclick="addToCalendar()">
                 <i class="far fa-calendar-alt"></i> AGREGAR AL CALENDARIO
             </button>
+        </div>
+    </section>
+
+    <!-- CRONOGRAMA (Nueva Sección) -->
+    <section id="cronograma">
+        <div class="glass-card">
+            <h2 class="font-serif italic" style="font-size: 1.6rem; margin-bottom: 10px;">Itinerario</h2>
+            <div class="separator"></div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">5:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Ceremonia Religiosa</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-time">6:30 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Recepción / Fiesta</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">7:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Entrada</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Cena</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Vals</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -342,7 +474,6 @@
 
     <!-- REGALOS -->
     <section id="regalos">
-        <!-- Opción 1: Mesa de Liverpool -->
         <div class="glass-card">
             <i class="fas fa-gift" style="font-size: 1.6rem; color: var(--dorado); margin-bottom: 10px;"></i>
             <h2 style="font-size: 1.4rem;">Mesa de Regalos</h2>
@@ -353,17 +484,14 @@
             </a>
         </div>
 
-        <!-- Opción 2: Lluvia de Sobres con Efecto GIRO -->
         <div class="flip-container" id="flipCard" onclick="this.classList.toggle('active')">
             <div class="flipper">
-                <!-- Lado Frontal -->
                 <div class="front">
                     <i class="fas fa-envelope-open-text" style="font-size: 2rem; color: var(--dorado); margin-bottom: 10px;"></i>
                     <h2 style="font-size: 1.4rem;">Lluvia de Sobres</h2>
                     <div class="separator"></div>
                     <p style="font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">(Toca la tarjeta para ver detalle)</p>
                 </div>
-                <!-- Lado Trasero -->
                 <div class="back">
                     <p style="font-size: 0.9rem; color: var(--texto); padding: 10px; line-height: 1.6;">
                         "La lluvia de sobres es la tradición de regalar dinero en efectivo en un sobre el día del evento."
@@ -406,6 +534,28 @@
     <script>
         const targetDate = new Date("March 14, 2026 15:00:00").getTime();
         
+        // Función de Música
+        function toggleMusic() {
+            const music = document.getElementById("bgMusic");
+            const btn = document.getElementById("musicToggle");
+            
+            if (music.paused) {
+                music.play();
+                btn.classList.add("playing");
+            } else {
+                music.pause();
+                btn.classList.remove("playing");
+            }
+        }
+
+        // Intento de reproducción automática (muchos navegadores lo bloquean hasta que el usuario interactúa)
+        window.addEventListener('click', () => {
+            const music = document.getElementById("bgMusic");
+            if(music.paused && !document.getElementById("musicToggle").classList.contains('manual-stop')) {
+                // music.play(); // Opcional: auto-play al primer click en cualquier parte
+            }
+        }, { once: true });
+
         const countdown = setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
