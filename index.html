@@ -1,41 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mis XV Años - Issa</title>
-    <!-- Fuentes Elegantes -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --lila-soft: #f8f4ff;
-            --lila-medio: #d1b3e6;
-            --lila-oscuro: #8e44ad;
-            --dorado: #c5a059;
-            /* Paleta de Grises para el Sobre */
-            --gris-claro: #e0e0e0;
-            --gris-medio: #bdc3c7;
-            --gris-oscuro: #7f8c8d;
-            --gris-carbon: #2c3e50;
-            --texto: #2c3e50;
-            --overlay-light: rgba(255, 255, 255, 0.9);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
+color: var(--texto);
+line-height: 1.4;
+overflow-x: hidden;
             background-color: var(--lila-soft);
-            color: var(--texto);
-            line-height: 1.4;
-            overflow-x: hidden;
         }
 
         /* --- ESTILOS DEL SOBRE ANIMADO --- */
@@ -45,7 +11,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #f5f5f5;
+            background-color: var(--lila-soft);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,67 +23,63 @@
             position: relative;
             width: 300px;
             height: 200px;
-            background: linear-gradient(135deg, var(--gris-claro) 0%, var(--gris-medio) 100%);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            background: var(--lila-medio);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: transform 0.5s;
-            border: 1px solid rgba(255,255,255,0.4);
         }
 
         .envelope:hover {
             transform: scale(1.05);
         }
 
+        /* Solapa superior */
         .envelope-flap {
             position: absolute;
             top: 0;
             left: 0;
             border-left: 150px solid transparent;
             border-right: 150px solid transparent;
-            border-top: 110px solid var(--gris-oscuro);
+            border-top: 110px solid var(--lila-oscuro);
             transform-origin: top;
             transition: transform 0.6s ease-in-out;
             z-index: 3;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
         }
 
+        /* Lados del sobre */
         .envelope-pocket {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #d1d1d1 0%, #b0b0b0 100%);
+            background: var(--lila-medio);
             z-index: 2;
             clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 100%, 0% 100%);
         }
 
+        /* El sello */
         .envelope-seal {
             position: absolute;
             top: 100px;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #f1c40f, #d4af37);
+            width: 50px;
+            height: 50px;
+            background: var(--dorado);
             border-radius: 50%;
             z-index: 4;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: opacity 0.3s;
-            border: 2px solid rgba(255,255,255,0.4);
-        }
-        
-        .envelope-seal::after {
-            content: '\f004'; 
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
             color: white;
-            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: opacity 0.3s;
         }
 
+        /* Estado Abierto */
         .envelope.open .envelope-flap {
             transform: rotateX(180deg);
             z-index: 1;
@@ -135,321 +97,377 @@
 
         @keyframes fadeOutEnvelope {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2.5); opacity: 0; visibility: hidden; }
+            100% { transform: scale(3); opacity: 0; visibility: hidden; }
         }
 
         /* --- ESTILOS DE LA INVITACIÓN --- */
         #main-content {
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            display: none;
+            display: none; /* Se activa con JS */
         }
 
         #main-content.visible {
             display: block;
             opacity: 1;
+}
+
+section {
+@@ -63,12 +172,6 @@
+margin: 10px 0;
+}
+
+        #portada {
+            padding-top: 40px;
+            min-height: 90vh;
         }
 
-        section {
+        /* Estilos del Cronograma */
+.timeline {
+position: relative;
+max-width: 100%;
+@@ -117,7 +220,6 @@
+color: var(--texto);
+}
+
+        /* Botón de Música */
+.music-control {
+position: fixed;
+bottom: 20px;
+@@ -127,7 +229,7 @@
+width: 45px;
+height: 45px;
+border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .glass-card {
-            background: var(--overlay-light);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px 20px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255,255,255,0.6);
-            margin: 15px 0;
-        }
-
-        .logo-principal {
-            width: 100%;
-            max-width: 250px; /* Tamaño aumentado */
-            height: auto;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-        }
-
-        .fecha-portada {
-            font-size: 1rem;
-            letter-spacing: 4px;
-            border-top: 1px solid var(--dorado);
-            border-bottom: 1px solid var(--dorado);
-            padding: 8px 20px;
-            margin: 20px 0;
-            display: inline-block;
-        }
-
-        .phrase-highlight {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--lila-oscuro);
-            margin: 25px 0;
-            padding: 15px;
-            border-left: 3px solid var(--dorado);
-            border-right: 3px solid var(--dorado);
-            background: rgba(209, 179, 230, 0.1);
-            line-height: 1.6;
-        }
-
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .time-unit {
-            background: white;
-            padding: 10px 5px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-
-        .time-unit span {
-            display: block;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--texto);
-        }
-
-        .time-unit label {
-            font-size: 0.6rem;
-            color: #999;
-            text-transform: uppercase;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            max-width: 300px;
-            padding: 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin: 10px auto;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-calendar { background: #34495e; color: white; }
-        .btn-map { background: white; color: var(--texto); border: 1px solid var(--dorado); }
-        .btn-whatsapp { background: #25d366; color: white; }
-        .btn-liverpool { background: #e6007e; color: white; }
-        .btn-instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; }
-
-        .timeline {
-            text-align: left;
-            margin: 20px 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 25px;
-        }
-
-        .timeline-time {
-            min-width: 90px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--dorado);
-            text-align: right;
-            padding-right: 20px;
-        }
-
-        .timeline-content {
-            border-left: 2px solid var(--dorado);
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 4px;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border: 2px solid var(--dorado);
-            border-radius: 50%;
-        }
-
-        .music-control {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-            background: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            cursor: pointer;
-            color: var(--dorado);
-        }
-
-        .gallery-item {
-            border: 8px solid white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
-            border-radius: 5px;
-            overflow: hidden;
-            max-width: 400px;
-            background: white;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            display: block;
-        }
+            display: none; /* Aparece tras abrir el sobre */
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+@@ -314,6 +416,25 @@
+z-index: 1;
+}
 
         .confirm-date {
-            font-weight: 700;
+            font-size: 1.1rem;
             color: var(--dorado);
-            display: block;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin: 15px 0;
-            padding: 10px;
+            display: block;
             border: 2px dashed var(--dorado);
+            padding: 10px;
             border-radius: 10px;
+            animation: bounce 2s infinite;
         }
 
-        footer {
-            padding: 40px 20px;
-            background: white;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #aaa;
-            letter-spacing: 2px;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
-    </style>
+
+footer {
+padding: 20px;
+background: rgba(255,255,255,0.7);
+@@ -324,219 +445,255 @@
 </head>
 <body>
 
+    <!-- Reproductor de Audio -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="images/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Control de Música -->
+    <div class="music-control" id="musicToggle" onclick="toggleMusic()">
+        <i class="fas fa-music"></i>
     <!-- Animación del Sobre -->
     <div id="envelope-wrapper">
         <div class="envelope" id="envelope" onclick="openEnvelope()">
             <div class="envelope-flap"></div>
             <div class="envelope-pocket"></div>
-            <div class="envelope-seal"></div>
-            <p style="position: absolute; bottom: -60px; left: 0; width: 100%; text-align: center; font-family: 'Playfair Display', serif; color: var(--gris-oscuro); font-style: italic; letter-spacing: 2px;">Toca para abrir</p>
+            <div class="envelope-seal">ISSA</div>
+            <p style="position: absolute; bottom: -50px; left: 0; width: 100%; text-align: center; font-family: 'Playfair Display', serif; color: var(--lila-oscuro); font-style: italic;">Toca para abrir invitación</p>
         </div>
-    </div>
+</div>
 
+    <!-- PORTADA -->
+    <section id="portada">
+        <div class="glass-card">
+            <img src="images/Logo Para Marca de Ropa Moderno Blanco y Negro.png" alt="[Logo de XV Issa]" class="logo-img">
+            <h1 class="logo-issa">ISSA</h1>
+            <div class="quince-badge">XV</div>
+            <p class="fecha-portada">14 · MARZO · 2026</p>
+            
+            <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 15px;">
+                "Hay momentos que se vuelven inolvidables cuando se comparten con las personas que más queremos."
+            </p>
+
+            <div class="countdown" id="timer">
+                <div class="time-unit"><span id="days">00</span><label>DÍAS</label></div>
+                <div class="time-unit"><span id="hours">00</span><label>HRS</label></div>
+                <div class="time-unit"><span id="mins">00</span><label>MIN</label></div>
+                <div class="time-unit"><span id="secs">00</span><label>SEG</label></div>
+            </div>
     <div id="main-content">
+        <!-- Reproductor de Audio -->
         <audio id="bgMusic" loop>
             <source src="images/song.mp3" type="audio/mpeg">
         </audio>
 
+            <button class="btn btn-calendar" onclick="addToCalendar()">
+                <i class="far fa-calendar-alt"></i> AGREGAR AL CALENDARIO
+            </button>
+        <!-- Control de Música -->
         <div class="music-control" id="musicToggle" onclick="toggleMusic()">
             <i class="fas fa-music"></i>
-        </div>
+</div>
+    </section>
 
+    <!-- CRONOGRAMA (Nueva Sección) -->
+    <section id="cronograma">
+        <div class="glass-card">
+            <h2 class="font-serif italic" style="font-size: 1.6rem; margin-bottom: 10px;">Itinerario</h2>
+            <div class="separator"></div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">5:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Ceremonia Religiosa</div>
+                    </div>
         <!-- PORTADA -->
         <section id="portada">
             <div class="glass-card">
-                <img src="images/Logo Para Marca de Ropa Moderno Blanco y Negro.png" alt="[Logo de XV Issa]" class="logo-principal">
-                
+                <img src="images/Logo Para Marca de Ropa Moderno Blanco y Negro.png" alt="[Logo de XV Issa]" class="logo-img">
+                <h1 class="logo-issa">ISSA</h1>
+                <div class="quince-badge">XV</div>
                 <p class="fecha-portada">14 · MARZO · 2026</p>
                 
-                <div class="phrase-highlight">
-                    "Un día para recordar, un sueño hecho realidad."
-                </div>
+                <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 15px;">
+                    "Hay momentos que se vuelven inolvidables cuando se comparten con las personas que más queremos."
+                </p>
 
                 <div class="countdown" id="timer">
-                    <div class="time-unit"><span id="days">00</span><label>Días</label></div>
-                    <div class="time-unit"><span id="hours">00</span><label>Hrs</label></div>
-                    <div class="time-unit"><span id="mins">00</span><label>Min</label></div>
-                    <div class="time-unit"><span id="secs">00</span><label>Seg</label></div>
-                </div>
+                    <div class="time-unit"><span id="days">00</span><label>DÍAS</label></div>
+                    <div class="time-unit"><span id="hours">00</span><label>HRS</label></div>
+                    <div class="time-unit"><span id="mins">00</span><label>MIN</label></div>
+                    <div class="time-unit"><span id="secs">00</span><label>SEG</label></div>
+</div>
 
                 <button class="btn btn-calendar" onclick="addToCalendar()">
-                    <i class="far fa-calendar-alt"></i> AGENDAR FECHA
+                    <i class="far fa-calendar-alt"></i> AGREGAR AL CALENDARIO
                 </button>
             </div>
         </section>
 
-        <!-- GALERÍA / FOTOS -->
-        <section id="galeria">
-            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 30px; color: var(--dorado); letter-spacing: 3px;">MOMENTOS</h2>
-            
-            <div class="gallery-item">
-                <img src="images/issa_pequena.jpeg" alt="[Foto de Issa de pequeña]">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="images/issa.jpeg" alt="[Foto de Issa actual]">
-            </div>
-
-            <a href="https://www.instagram.com/issa.pr_?igsh=MXJ2bGF0a3plcmFuNA==" target="_blank" class="btn btn-instagram">
-                <i class="fab fa-instagram"></i> @issa.pr_
-            </a>
-        </section>
-
         <!-- CRONOGRAMA -->
-        <section id="itinerario">
+        <section id="cronograma">
             <div class="glass-card">
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px;">Itinerario</h2>
+                <h2 class="font-serif italic" style="font-size: 1.6rem; margin-bottom: 10px;">Itinerario</h2>
+                <div class="separator"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">6:30 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Recepción / Fiesta</div>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-time">5:00 PM</div>
-                        <div class="timeline-content"><p>Ceremonia Religiosa</p></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Ceremonia Religiosa</div>
+                        </div>
                     </div>
+                    
                     <div class="timeline-item">
                         <div class="timeline-time">6:30 PM</div>
-                        <div class="timeline-content"><p>Recepción</p></div>
-                    </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Recepción / Fiesta</div>
+                        </div>
+</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">7:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Entrada</div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">7:00 PM</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Entrada</div>
+                        </div>
+</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Cena</div>
                     <div class="timeline-item">
                         <div class="timeline-time">8:00 PM</div>
-                        <div class="timeline-content"><p>Cena</p></div>
-                    </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Cena</div>
+                        </div>
+</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Vals</div>
                     <div class="timeline-item">
                         <div class="timeline-time">9:00 PM</div>
-                        <div class="timeline-content"><p>Vals y Brindis</p></div>
-                    </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Vals</div>
+                        </div>
+</div>
+</div>
+</div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section id="social">
+        <div class="glass-card">
+            <h2 class="font-serif italic" style="font-size: 1.2rem; margin-bottom: 10px;">¡Sígueme en Instagram!</h2>
+            <p style="font-size: 0.8rem; margin-bottom: 15px;">No te pierdas ningún detalle de este gran día.</p>
+            <a href="https://www.instagram.com/issa.pr_?igsh=MXJ2bGF0a3plcmFuNA==" target="_blank" class="btn btn-instagram">
+                <i class="fab fa-instagram"></i> @issa.pr_
+            </a>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <h2 style="font-size: 1.8rem; color: var(--texto); margin-bottom: 20px;">Momentos</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="images/issa.jpeg" alt="[Foto de Issa 1]">
+        </section>
+
+        <!-- INSTAGRAM -->
+        <section id="social">
+            <div class="glass-card">
+                <h2 class="font-serif italic" style="font-size: 1.2rem; margin-bottom: 10px;">¡Sígueme en Instagram!</h2>
+                <p style="font-size: 0.8rem; margin-bottom: 15px;">No te pierdas ningún detalle de este gran día.</p>
+                <a href="https://www.instagram.com/issa.pr_?igsh=MXJ2bGF0a3plcmFuNA==" target="_blank" class="btn btn-instagram">
+                    <i class="fab fa-instagram"></i> @issa.pr_
+                </a>
+</div>
+            <div class="gallery-item">
+                <img src="images/issa_pequeña.jpeg" alt="[Foto de Issa pequeña]">
+        </section>
+
+        <!-- GALERÍA -->
+        <section id="galeria">
+            <h2 style="font-size: 1.8rem; color: var(--texto); margin-bottom: 20px;">Momentos</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="images/issa.jpeg" alt="[Foto de Issa 1]">
                 </div>
+                <div class="gallery-item">
+                    <img src="images/issa_pequena.jpeg" alt="[Foto de Issa pequeña]">
+                </div>
+            </div>
+        </section>
+
+        <!-- FAMILIA -->
+        <section id="padres">
+            <div class="glass-card">
+                <h2 class="font-serif italic" style="font-size: 1.4rem;">Con la bendición de mis padres</h2>
+                <div class="separator"></div>
+                <p style="font-size: 1.05rem;">
+                    <strong>Lucia Rosales Rodríguez</strong><br>
+                    <span style="color: var(--dorado);">&</span><br>
+                    <strong>Rafael Pineda Rivera</strong>
+                </p>
+                
+                <h2 class="font-serif italic" style="font-size: 1.4rem; margin-top: 20px;">Mi Madrina</h2>
+                <div class="separator"></div>
+                <p style="font-size: 1.05rem;">
+                    <strong>Carolina Rivera Díaz</strong>
+                </p>
             </div>
         </section>
 
         <!-- UBICACIONES -->
         <section id="ubicaciones">
             <div class="glass-card">
-                <i class="fas fa-church" style="font-size: 2rem; color: var(--dorado); margin-bottom: 15px;"></i>
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Misa</h3>
+                <img src="images/iglesia.jpg" alt="[Imagen de la Parroquia]" class="iglesia-img">
+                <i class="fas fa-church" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+                <h3 style="font-size: 1.3rem;">Ceremonia Religiosa</h3>
                 <p><strong>Parroquia de San Francisco Galileo</strong></p>
-                <p style="font-size: 0.9rem; margin: 10px 0;">El Pueblito, Corregidora, Qro.</p>
+                <p>17:00 Horas (5:00 PM)</p>
+                <p style="font-size: 0.75rem; color: #7f8c8d;">El Pueblito, Corregidora, Qro.</p>
                 <a href="https://maps.app.goo.gl/DGXMSm9QWjcaYWuTA" target="_blank" class="btn btn-map">
-                    <i class="fas fa-location-arrow"></i> CÓMO LLEGAR
+                    <i class="fas fa-map-marker-alt"></i> VER MAPA
                 </a>
-            </div>
+</div>
+        </div>
+    </section>
 
+    <!-- FAMILIA -->
+    <section id="padres">
+        <div class="glass-card">
+            <h2 class="font-serif italic" style="font-size: 1.4rem;">Con la bendición de mis padres</h2>
+            <div class="separator"></div>
+            <p style="font-size: 1.05rem;">
+                <strong>Lucia Rosales Rodríguez</strong><br>
+                <span style="color: var(--dorado);">&</span><br>
+                <strong>Rafael Pineda Rivera</strong>
+            </p>
+            
+            <h2 class="font-serif italic" style="font-size: 1.4rem; margin-top: 20px;">Mi Madrina</h2>
+            <div class="separator"></div>
+            <p style="font-size: 1.05rem;">
+                <strong>Carolina Rivera Díaz</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- UBICACIONES -->
+    <section id="ubicaciones">
+        <div class="glass-card">
+            <img src="images/iglesia.jpg" alt="[Imagen de la Parroquia]" class="iglesia-img">
+            <i class="fas fa-church" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+            <h3 style="font-size: 1.3rem;">Ceremonia Religiosa</h3>
+            <p><strong>Parroquia de San Francisco Galileo</strong></p>
+            <p>15:00 Horas</p>
+            <p style="font-size: 0.75rem; color: #7f8c8d;">El Pueblito, Corregidora, Qro.</p>
+            <a href="https://maps.app.goo.gl/DGXMSm9QWjcaYWuTA" target="_blank" class="btn btn-map">
+                <i class="fas fa-map-marker-alt"></i> VER MAPA
+            </a>
+        </div>
+
+        <div class="glass-card">
+            <i class="fas fa-glass-cheers" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+            <h3 style="font-size: 1.3rem;">Recepción</h3>
+            <p><strong>Chocolate Azul Jardín</strong></p>
+            <p>17:30 Horas</p>
+            <a href="https://maps.app.goo.gl/28VZqnHdGxJ7nGxS6?g_st=iw" target="_blank" class="btn btn-map">
+                <i class="fas fa-map-marker-alt"></i> VER MAPA
+            </a>
+        </div>
+    </section>
+
+    <!-- REGALOS -->
+    <section id="regalos">
+        <div class="glass-card">
+            <i class="fas fa-gift" style="font-size: 1.6rem; color: var(--dorado); margin-bottom: 10px;"></i>
+            <h2 style="font-size: 1.4rem;">Mesa de Regalos</h2>
+            <div class="separator"></div>
+            <p style="font-size: 0.85rem; margin-bottom: 15px;">Si deseas obsequiarme algo, puedes hacerlo a través de mi mesa de regalos:</p>
+            <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51935340" target="_blank" class="btn btn-liverpool">
+                <i class="fas fa-shopping-bag"></i> MESA LIVERPOOL
+            </a>
+        </div>
             <div class="glass-card">
-                <i class="fas fa-glass-cheers" style="font-size: 2rem; color: var(--dorado); margin-bottom: 15px;"></i>
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Fiesta</h3>
+                <i class="fas fa-glass-cheers" style="font-size: 1.4rem; color: var(--dorado); margin-bottom: 5px;"></i>
+                <h3 style="font-size: 1.3rem;">Recepción</h3>
                 <p><strong>Chocolate Azul Jardín</strong></p>
-                <p style="font-size: 0.9rem; margin: 10px 0;">Recepción 6:30 PM</p>
+                <p>18:30 Horas (6:30 PM)</p>
                 <a href="https://maps.app.goo.gl/28VZqnHdGxJ7nGxS6?g_st=iw" target="_blank" class="btn btn-map">
-                    <i class="fas fa-location-arrow"></i> CÓMO LLEGAR
+                    <i class="fas fa-map-marker-alt"></i> VER MAPA
                 </a>
             </div>
         </section>
@@ -457,76 +475,187 @@
         <!-- REGALOS -->
         <section id="regalos">
             <div class="glass-card">
-                <i class="fas fa-gift" style="font-size: 2rem; color: var(--dorado); margin-bottom: 15px;"></i>
-                <h2 style="font-family: 'Playfair Display', serif;">Mesa de Regalos</h2>
-                <p style="font-size: 0.85rem; margin: 15px 0;">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo:</p>
+                <i class="fas fa-gift" style="font-size: 1.6rem; color: var(--dorado); margin-bottom: 10px;"></i>
+                <h2 style="font-size: 1.4rem;">Mesa de Regalos</h2>
+                <div class="separator"></div>
+                <p style="font-size: 0.85rem; margin-bottom: 15px;">Si deseas obsequiarme algo, puedes hacerlo a través de mi mesa de regalos:</p>
                 <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51935340" target="_blank" class="btn btn-liverpool">
-                    <i class="fas fa-shopping-bag"></i> LIVERPOOL
+                    <i class="fas fa-shopping-bag"></i> MESA LIVERPOOL
                 </a>
-                <p style="margin-top: 20px; font-weight: 600;">Lluvia de Sobres</p>
-                <p style="font-size: 0.75rem;">Contaremos con un buzón en la entrada para sobres con efectivo.</p>
+            </div>
+
+        <div class="flip-container" id="flipCard" onclick="this.classList.toggle('active')">
+            <div class="flipper">
+                <div class="front">
+                    <i class="fas fa-envelope-open-text" style="font-size: 2rem; color: var(--dorado); margin-bottom: 10px;"></i>
+                    <h2 style="font-size: 1.4rem;">Lluvia de Sobres</h2>
+                    <div class="separator"></div>
+                    <p style="font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">(Toca la tarjeta para ver detalle)</p>
+                </div>
+                <div class="back">
+                    <p style="font-size: 0.9rem; color: var(--texto); padding: 10px; line-height: 1.6;">
+                        "La lluvia de sobres es la tradición de regalar dinero en efectivo en un sobre el día del evento."
+                    </p>
+                    <i class="fas fa-info-circle" style="color: var(--dorado); font-size: 1.2rem; margin-top: 10px;"></i>
+            <div class="flip-container" id="flipCard" onclick="this.classList.toggle('active')">
+                <div class="flipper">
+                    <div class="front">
+                        <i class="fas fa-envelope-open-text" style="font-size: 2rem; color: var(--dorado); margin-bottom: 10px;"></i>
+                        <h2 style="font-size: 1.4rem;">Lluvia de Sobres</h2>
+                        <div class="separator"></div>
+                        <p style="font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">(Toca la tarjeta para ver detalle)</p>
+                    </div>
+                    <div class="back">
+                        <p style="font-size: 0.9rem; color: var(--texto); padding: 10px; line-height: 1.6;">
+                            "La lluvia de sobres es la tradición de regalar dinero en efectivo en un sobre el día del evento."
+                        </p>
+                        <i class="fas fa-info-circle" style="color: var(--dorado); font-size: 1.2rem; margin-top: 10px;"></i>
+                    </div>
+</div>
+</div>
+        </div>
+    </section>
+
+    <!-- VESTIMENTA -->
+    <section id="vestimenta">
+        <div class="glass-card" style="border: 1.5px solid var(--dorado);">
+            <i class="fas fa-user-tie" style="font-size: 1.6rem; margin-bottom: 5px;"></i>
+            <h2 style="font-size: 1.4rem;">Código de Vestimenta</h2>
+            <div class="separator"></div>
+            <p style="font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;">Formal</p>
+            <p style="font-size: 0.8rem; font-style: italic; margin-top: 10px; color: #555;">
+                Agradecemos su preferencia por cualquier color, exceptuando el <strong>Rosa</strong>, reservado para la quinceañera.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONFIRMACIÓN -->
+    <section id="detalles">
+        <div class="glass-card">
+            <p style="font-size: 1rem;">Pases Reservados: <strong>06</strong></p>
+            <p style="color: #7f8c8d; font-size: 0.75rem; margin-bottom: 10px;">Confirmar antes del 20 de febrero.</p>
+            
+            <a href="https://wa.me/521234567890?text=Hola%20Issa!%20Confirmo%20mi%20asistencia." target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> CONFIRMAR ASISTENCIA
+            </a>
+        </div>
+    </section>
+        </section>
+
+        <!-- VESTIMENTA -->
+        <section id="vestimenta">
+            <div class="glass-card" style="border: 1.5px solid var(--dorado);">
+                <i class="fas fa-user-tie" style="font-size: 1.6rem; margin-bottom: 5px;"></i>
+                <h2 style="font-size: 1.4rem;">Código de Vestimenta</h2>
+                <div class="separator"></div>
+                <p style="font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;">Formal</p>
+                <p style="font-size: 0.8rem; font-style: italic; margin-top: 10px; color: #555;">
+                    Agradecemos su preferencia por cualquier color, exceptuando el <strong>Rosa</strong>, reservado para la quinceañera.
+                </p>
             </div>
         </section>
 
         <!-- CONFIRMACIÓN -->
-        <section id="confirmacion">
+        <section id="detalles">
             <div class="glass-card">
-                <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">Confirmación</h2>
-                <p style="font-size: 0.9rem;">Por favor, confírmanos tu asistencia</p>
-                <span class="confirm-date">Antes del 20 de febrero</span>
+                <i class="fas fa-calendar-check" style="font-size: 1.5rem; color: var(--dorado); margin-bottom: 10px;"></i>
+                <h2 style="font-size: 1.2rem;">Confirmación</h2>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Es muy importante para nosotros contar con tu presencia.</p>
                 
-                <a href="https://wa.me/524462191045?text=Hola%20Issa!%20Confirmo%20mi%20asistencia%20a%20tu%20fiesta%20de%20XV." target="_blank" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> ENVIAR WHATSAPP
+                <span class="confirm-date">Confirmar antes del 20 de febrero</span>
+                
+                <a href="https://wa.me/524425594054?text=Hola%20Issa!%20Confirmo%20mi%20asistencia%20a%20tus%20XV." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> CONFIRMAR ASISTENCIA
                 </a>
             </div>
         </section>
 
+    <footer>
+        <p>ISSA · 2026 · QUINCE AÑOS</p>
+    </footer>
         <footer>
             <p>ISSA · 2026 · QUINCE AÑOS</p>
         </footer>
     </div>
 
-    <script>
-        const targetDate = new Date("March 14, 2026 17:00:00").getTime();
-        const music = document.getElementById("bgMusic");
+<script>
+const targetDate = new Date("March 14, 2026 15:00:00").getTime();
+const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicToggle");
         const musicBtn = document.getElementById("musicToggle");
         const envelope = document.getElementById("envelope");
         const wrapper = document.getElementById("envelope-wrapper");
         const mainContent = document.getElementById("main-content");
 
+        // Función para abrir el sobre
         function openEnvelope() {
             envelope.classList.add("open");
+            
+            // Esperar a que la solapa se abra antes de mostrar el contenido
             setTimeout(() => {
                 wrapper.style.opacity = "0";
                 mainContent.classList.add("visible");
                 musicBtn.style.display = "flex";
+                
+                // Reproducir música al abrir
                 playMusic();
-                setTimeout(() => { wrapper.style.display = "none"; }, 1000);
+                
+                setTimeout(() => {
+                    wrapper.style.display = "none";
+                }, 1000);
             }, 1000);
         }
 
-        function toggleMusic() {
-            if (music.paused) { music.play(); musicBtn.classList.add("playing"); }
-            else { music.pause(); musicBtn.classList.remove("playing"); }
-        }
+        // Función para alternar música
+function toggleMusic() {
+if (music.paused) {
+playMusic();
+@@ -547,27 +704,16 @@ <h2 style="font-size: 1.4rem;">Código de Vestimenta</h2>
 
-        function playMusic() {
-            music.play().then(() => { musicBtn.classList.add("playing"); }).catch(e => {});
-        }
+function playMusic() {
+music.play().then(() => {
+                btn.classList.add("playing");
+            }).catch(e => console.log("Error al reproducir audio:", e));
+                musicBtn.classList.add("playing");
+            }).catch(e => console.log("Audio waiting for user interaction"));
+}
 
-        setInterval(function() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            document.getElementById("mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        }, 1000);
+function pauseMusic() {
+music.pause();
+            btn.classList.remove("playing");
+            musicBtn.classList.remove("playing");
+}
 
-        function addToCalendar() {
-            const googleUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+Issa&dates=20260314T230000Z/20260315T080000Z&details=Invitacion+Digital+XV+Issa&location=Chocolate+Azul+Jardin,+Queretaro";
-            window.open(googleUrl, '_blank');
-        }
-    </script>
-</body>
-</html>
+        // Desbloqueo de audio al interactuar con el sitio
+        window.addEventListener('click', () => {
+            if (music.paused) {
+                playMusic();
+            }
+        }, { once: true });
+
+        // Intento de reproducción al cargar (puede fallar por políticas del navegador)
+        window.onload = function() {
+            playMusic();
+        };
+
+        // Cuenta regresiva
+const countdown = setInterval(function() {
+const now = new Date().getTime();
+const distance = targetDate - now;
+@@ -577,10 +723,12 @@ <h2 style="font-size: 1.4rem;">Código de Vestimenta</h2>
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("mins").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("secs").innerText = seconds.toString().padStart(2, '0');
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("mins").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("secs").innerText = seconds.toString().padStart(2, '0');
+            }
+
+if (distance < 0) {
+clearInterval(countdown);
