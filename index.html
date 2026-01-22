@@ -178,10 +178,11 @@
 
         .logo-issa {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            letter-spacing: 10px;
+            font-size: 2.2rem;
+            letter-spacing: 8px;
             color: var(--texto);
             margin: 10px 0;
+            font-weight: 700;
         }
 
         .quince-badge {
@@ -201,6 +202,19 @@
             padding: 8px 20px;
             margin: 20px 0;
             display: inline-block;
+        }
+
+        .phrase-highlight {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--lila-oscuro);
+            margin: 25px 0;
+            padding: 15px;
+            border-left: 3px solid var(--dorado);
+            border-right: 3px solid var(--dorado);
+            background: rgba(209, 179, 230, 0.1);
+            line-height: 1.6;
         }
 
         .countdown {
@@ -370,13 +384,14 @@
         <!-- PORTADA -->
         <section id="portada">
             <div class="glass-card">
-                <img src="images/Logo Para Marca de Ropa Moderno Blanco y Negro.png" alt="[Logo de XV Issa]" style="max-width: 120px; margin-bottom: 15px;">
-              
+                <img src="images/Logo Para Marca de Ropa Moderno Blanco y Negro.png" alt="[Logo de XV Issa]" style="max-width: 100px; margin-bottom: 10px;">
+                <h1 class="logo-issa">ISSA XV</h1>
+                <div class="quince-badge">XV</div>
                 <p class="fecha-portada">14 · MARZO · 2026</p>
                 
-                <p style="font-style: italic; font-size: 0.9rem; margin-bottom: 25px; padding: 0 10px;">
+                <div class="phrase-highlight">
                     "Un día para recordar, un sueño hecho realidad."
-                </p>
+                </div>
 
                 <div class="countdown" id="timer">
                     <div class="time-unit"><span id="days">00</span><label>Días</label></div>
@@ -389,6 +404,26 @@
                     <i class="far fa-calendar-alt"></i> AGENDAR FECHA
                 </button>
             </div>
+        </section>
+
+        <!-- GALERÍA / FOTOS -->
+        <section id="galeria">
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 20px; color: var(--dorado);">Momentos</h2>
+            <!-- Foto de pequeña -->
+            <div class="gallery-item">
+                <img src="images/issa_pequena.jpeg" alt="[Foto de Issa de pequeña]">
+                <p style="padding: 10px; font-size: 0.8rem; background: white;">Mis primeros pasos...</p>
+            </div>
+            
+            <!-- Foto actual -->
+            <div class="gallery-item">
+                <img src="images/issa.jpeg" alt="[Foto de Issa actual]">
+                <p style="padding: 10px; font-size: 0.8rem; background: white;">Mis XV años</p>
+            </div>
+
+            <a href="https://www.instagram.com/issa.pr_?igsh=MXJ2bGF0a3plcmFuNA==" target="_blank" class="btn btn-instagram">
+                <i class="fab fa-instagram"></i> @issa.pr_
+            </a>
         </section>
 
         <!-- CRONOGRAMA -->
@@ -414,16 +449,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- GALERÍA -->
-        <section id="galeria">
-            <div class="gallery-item">
-                <img src="images/issa.jpeg" alt="[Foto de Issa]">
-            </div>
-            <a href="https://www.instagram.com/issa.pr_?igsh=MXJ2bGF0a3plcmFuNA==" target="_blank" class="btn btn-instagram">
-                <i class="fab fa-instagram"></i> @issa.pr_
-            </a>
         </section>
 
         <!-- UBICACIONES -->
@@ -525,4 +550,3 @@
     </script>
 </body>
 </html>
-
